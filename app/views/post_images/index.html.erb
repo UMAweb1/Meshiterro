@@ -1,3 +1,4 @@
+
 <section class="sct-color-1 slice">
   <div class="container-fluid masonry-container">
     <div class="row">
@@ -24,20 +25,24 @@
                   <% end %>
                   </h3>
                   <p><%= post_image.caption %></p>
-                  <ul class="inline-meta">
-                    <li>By
-                      <%= post_image.user.name %>
-                    </li>
-                    <li>
-                    <a href="#">23 コメント</a>
-                    </li>
-                  </ul>
+<!-- コメント表示件数 -->
+          <ul class="inline-meta">
+            <li>By
+              <%= post_image.user.name %>
+            </li>
+            <li>
+              <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
+            </li>
+          </ul>
+<!-- コメント表示件数　終わり -->
                 </div>
               </div>
             </div>
             <% end %>
+            <%= paginate @post_images, class: "paginate" %>
         </div>
       </div>
     </div>
   </div>
 </section>
+
